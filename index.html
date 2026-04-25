@@ -6,59 +6,82 @@
 <title>TERA Association</title>
 
 <style>
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 /* NAVBAR */
 nav {
+  position: sticky;
+  top: 0;
   background: #111;
   color: white;
-  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
+  padding: 15px 40px;
+  z-index: 1000;
 }
 nav a {
   color: white;
-  margin: 0 15px;
+  margin-left: 20px;
   text-decoration: none;
+  font-weight: 500;
+}
+nav a:hover {
+  color: #00c896;
 }
 
 /* HERO */
 .hero {
+  height: 90vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url('https://images.unsplash.com/photo-1593113598332-cd288d649433');
+  background-size: cover;
+  background-position: center;
+  color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #007b5e;
-  color: white;
   padding: 60px;
 }
-.hero-text {
-  max-width: 50%;
+.hero-content {
+  max-width: 600px;
 }
 .hero h1 {
-  font-size: 40px;
+  font-size: 50px;
+  margin-bottom: 20px;
 }
-.hero img {
-  width: 350px;
-  border-radius: 10px;
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 /* BUTTON */
 .btn {
-  background: white;
-  color: #007b5e;
+  background: #00c896;
+  color: white;
   padding: 12px 25px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #009f73;
 }
 
 /* SECTION */
 .section {
-  padding: 50px;
+  padding: 70px 40px;
   text-align: center;
+}
+.section h2 {
+  margin-bottom: 20px;
 }
 
 /* CARDS */
@@ -69,65 +92,97 @@ nav a {
   flex-wrap: wrap;
 }
 .card {
-  background: #f5f5f5;
+  width: 300px;
+  background: white;
   border-radius: 10px;
-  width: 280px;
   overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-10px);
 }
 .card img {
   width: 100%;
+  height: 180px;
+  object-fit: cover;
 }
 .card h3 {
-  margin: 10px;
+  margin: 15px;
 }
 .card p {
-  padding: 0 10px;
+  padding: 0 15px;
 }
-.card button {
-  background: #007b5e;
-  color: white;
-  border: none;
-  padding: 10px;
+.card a {
+  display: inline-block;
   margin: 15px;
+}
+
+/* DIRECTORS */
+.directors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.director {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+/* CONTACT */
+form input, form textarea {
+  width: 80%;
+  padding: 10px;
+  margin: 10px;
   border-radius: 5px;
-  cursor: pointer;
+  border: 1px solid #ccc;
+}
+form button {
+  background: #00c896;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
 }
 
 /* FOOTER */
 footer {
   background: #111;
   color: white;
+  padding: 30px;
   text-align: center;
-  padding: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
-  <div><strong>TERA</strong></div>
+  <div><b>TERA</b></div>
   <div>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Programs</a>
-    <a href="#">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#programs">Programs</a>
+    <a href="#about">About</a>
+    <a href="#directors">Directors</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
+<section id="home" class="hero">
+  <div class="hero-content">
     <h1>Creating Better Tomorrow For Communities</h1>
-    <p>Empowering multicultural communities through education, arts, and support.</p>
-    <a href="#" class="btn">Join Now</a>
+    <p>Empowering multicultural communities through education, arts, and social support.</p>
+    <a href="#contact" class="btn">Join Now</a>
   </div>
-  <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433" alt="community">
 </section>
 
 <!-- PROGRAMS -->
-<section class="section">
+<section id="programs" class="section">
   <h2>Our Programs</h2>
 
   <div class="cards">
@@ -135,40 +190,65 @@ footer {
     <div class="card">
       <img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
       <h3>Education</h3>
-      <p>Workshops, training, and youth development programs.</p>
-      <button>Learn More</button>
+      <p>Workshops, camps, and training programs for all ages.</p>
+      <a href="#about" class="btn">Learn More</a>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
       <h3>Arts & Culture</h3>
-      <p>Art exhibitions and cultural events.</p>
-      <button>Learn More</button>
+      <p>Art exhibitions and events for community engagement.</p>
+      <a href="#about" class="btn">Learn More</a>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1581579188871-45ea61f2a5e3">
       <h3>Senior Support</h3>
-      <p>Helping seniors stay connected and supported.</p>
-      <button>Learn More</button>
+      <p>Helping seniors live connected and fulfilling lives.</p>
+      <a href="#about" class="btn">Learn More</a>
     </div>
 
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="section" style="background:#f9f9f9;">
+<section id="about" class="section" style="background:#f9f9f9;">
   <h2>About Us</h2>
   <p>
-    TERA - Together Evolving and Rising Association is committed to building stronger communities
-    through education, arts, and social support across Alberta.
+  TERA - Together Evolving and Rising Association supports multicultural communities across Alberta.
   </p>
+</section>
+
+<!-- DIRECTORS -->
+<section id="directors" class="section">
+  <h2>Our Directors</h2>
+
+  <div class="directors">
+    <div class="director"><b>Arshbir Singh Brar</b><br>Edmonton</div>
+    <div class="director"><b>Manjot Kaur Brar</b><br>Edmonton</div>
+    <div class="director"><b>Arshpreet Singh Sandhu</b><br>Calgary</div>
+    <div class="director"><b>Sanyog Singh Vander</b><br>Calgary</div>
+    <div class="director"><b>Mirande Alexandre</b><br>Edmonton</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section" style="background:#f9f9f9;">
+  <h2>Contact Us</h2>
+
+  <form>
+    <input type="text" placeholder="Your Name" required><br>
+    <input type="email" placeholder="Your Email" required><br>
+    <textarea rows="4" placeholder="Your Message"></textarea><br>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p>Email: contact@tera-association.org</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <p>© 2024 TERA Association</p>
-  <p>contact@tera-association.org | Alberta, Canada</p>
 </footer>
 
 </body>
